@@ -29,7 +29,7 @@ public class Jugador {
     }
 
     public void incrementarPuntaje() {
-        puntaje++;
+        this.puntaje++;
     }
 
     public void agregarPares(int fila, int columna) {
