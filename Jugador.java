@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Jugador {
     private String nombre;
-    private ArrayList<Integer> celdasDescubiertas;
+    private ArrayList<String> celdasDescubiertas; //cambie el tipo del array para poder hacer la comparación entre celdas descubiertas
     private int puntaje;
 
     public Jugador(String nombre) {
@@ -16,7 +16,7 @@ public class Jugador {
         return nombre;
     }
 
-    public ArrayList<Integer> getCeldasDescubiertas() {
+    public ArrayList<String> getCeldasDescubiertas() {
         return celdasDescubiertas;
     }
 
@@ -32,8 +32,20 @@ public class Jugador {
         this.puntaje++;
     }
 
+    //vuelve a string fila y columna para añadirlas al array
     public void agregarPares(int fila, int columna) {
-        celdasDescubiertas.add(fila);
-        celdasDescubiertas.add(columna);
+        String clave = fila + "," + columna;
+        celdasDescubiertas.add(clave);
+    }
+
+    //añadí este método para verificar si las celdas ya estan en la lista de celdas descubiertas y devuelve true si el jugador ya eligio la selda en ese turno para evitar repeticion
+    public boolean yaSeleccionada(int fila, int columna) {
+        String clave = fila + "," + columna;
+        return celdasDescubiertas.contains(clave);
+    }
+
+    //añadí este método para poder limpiar la seleccion de casillas cada turno nuevo
+    public void limpiarSeleccionCasilla() {
+        celdasDescubiertas.clear();
     }
 }
