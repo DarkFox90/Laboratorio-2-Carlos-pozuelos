@@ -12,4 +12,28 @@ public class Jugador {
         this.puntaje = 0;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public ArrayList<Integer> getCeldasDescubiertas() {
+        return celdasDescubiertas;
+    }
+
+    public int getPuntaje() {
+        return puntaje;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void incrementarPuntaje() {
+        puntaje++;
+    }
+
+    public void agregarPares(int fila, int columna) {
+        celdasDescubiertas.add(fila);
+        celdasDescubiertas.add(columna);
+    }
 }
