@@ -1,0 +1,5 @@
+// modelo
+
+public class Jugador {
+
+}
