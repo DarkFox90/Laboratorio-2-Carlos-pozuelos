@@ -21,8 +21,8 @@ public class Tablero {
             }
         }
 
-        //array de emojis
-        String[] emojis = {"😀","😹","🦠","🐠","👣","🦊","🦎","🙊"};
+        //array de letras porque los emojis no salen en consola
+        String[] emojis = {"A","B","C","D","E","F","G","H"};
         String[] emojisDisponibles = new String[filas * columnas];
         int posicion = 0;
 

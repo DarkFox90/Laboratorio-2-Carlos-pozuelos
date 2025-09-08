@@ -11,8 +11,10 @@
 
  //los metodos de main los hice en otras clases por lo que agregué otras validaciones 
  
-
+import java.util.Scanner;
 public class Main {
+
+    private static final Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         System.out.println("===MEMORIA===");
         boolean continuar = true;
@@ -53,7 +55,7 @@ public class Main {
                 } else if (resultado.equals("no par")) {
                     mostrarTablero(tablero);
                     System.out.println("no coincide el par, pierdes tu turno");
-                    tablero.ocultarCelda(f1, c1);.
+                    tablero.ocultarCelda(f1, c1);
                     tablero.ocultarCelda(f2, c2);
                     juego.cambiarTurno();
                 } 
@@ -68,6 +70,90 @@ public class Main {
         } while (continuar);
 
         System.out.println("gracias por jugar");
+    }
+
+    private static int validarEntero(String prompt, int min, int max) {
+        boolean valido = false;
+        int valor = min;
+
+        do { 
+            System.out.println(prompt);
+            String linea = sc.nextLine();
+            try {
+                int v = Integer.parseInt(linea.trim());
+                if (v < min || v > max) {
+                    System.out.println("valor fuera de rango");
+                } else {
+                    valor = v;
+                    valido = true;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("ingrese un numero entero válido");
+            }
+        } while (!valido);
+        return valor;
+    }
+
+    private static String validarNombre(String prompt) {
+        boolean valido = false;
+        String s = "";
+
+        do { 
+            System.out.println(prompt);
+            s = sc.nextLine().trim();
+            if(s.length() == 0) {
+                System.out.println("no puede dejar el campo vacío");
+            } else {
+                valido = true;
+            }
+        } while (!valido);
+
+        return s;
+    }
+
+    private static boolean validarContinuacion(String prompt) {
+        boolean valido = false;
+        String s = "";
+
+        do { 
+            System.out.println(prompt);
+            s = sc.nextLine().trim().toLowerCase();
+            if (s.equals("s") || s.equals("n")) {
+                valido = true;
+            } else {
+                System.out.println("tiene que responder con s o n");
+            }
+            return s.equals("s");
+        } while (!valido);
+    }
+
+    private static void mostrarTablero(Tablero t) {
+        System.out.println("  ");
+        for (int j = 0; j < 4; j++) {
+            System.out.println(j + " ");
+        }
+        System.out.println();
+
+        for (int i = 0; i < 4; i++) {
+            System.out.println(i + ": ");
+            for (int j = 0; j < 4; j++) {
+                System.out.println(t.obtenerEmoji(i, j) + " ");
+            }
+        }
+        System.out.println();
+    }
+
+    private static void ganador(Jugador j1, Jugador j2) {
+        int p1 = j1.getPuntaje();
+        int p2 = j2.getPuntaje();
+
+        if (p1 > p2) {
+            System.out.println("jugador: " + j1.getNombre() + " gana la partida");
+        } else if (p2 > p1) {
+            System.out.println("jugador: " + j2.getNombre() + " gana la partida");
+        } else {
+            System.out.println("empate");
+        }
     }
 }
    
