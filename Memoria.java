@@ -34,7 +34,7 @@ public class Memoria {
     public String realizarTurno(int f1, int c1, int f2, int c2) {
         if (f1 == f2 && c1 == c2) {
             return "misma";
-        } else if (tablero.verificarCeldaE(f1, c2) || tablero.verificarCeldaE(f2, c2)) {
+        } else if (tablero.verificarCeldaE(f1, c1) || tablero.verificarCeldaE(f2, c2)) {
             return "emparejada";
         }
 
@@ -46,6 +46,8 @@ public class Memoria {
 
         if (emoji1.equals(emoji2)) {
             getJugadorActual().incrementarPuntaje();
+            tablero.marcarEmparejadas(f1, c1, f2, c2);
+         
             return "par";
         } else {
             return "no par";
@@ -55,4 +57,4 @@ public class Memoria {
 }
 
 
-//no utilicé jugar ya que se me hizo más facil hacerlo en main
+//no utilicé jugar() ya que se me hizo más facil hacerlo en main

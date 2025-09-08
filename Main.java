@@ -72,6 +72,9 @@ public class Main {
         System.out.println("gracias por jugar");
     }
 
+    //validaciones extras que agregué por haber hecho las otras en otras clases.
+
+    //funcion que valida que el usuario ingrese un numero entero
     private static int validarEntero(String prompt, int min, int max) {
         boolean valido = false;
         int valor = min;
@@ -80,8 +83,8 @@ public class Main {
             System.out.println(prompt);
             String linea = sc.nextLine();
             try {
-                int v = Integer.parseInt(linea.trim());
-                if (v < min || v > max) {
+                int v = Integer.parseInt(linea.trim()); //intenta convertir el string a numero
+                if (v < min || v > max) { //valida que esté dentro del rango
                     System.out.println("valor fuera de rango");
                 } else {
                     valor = v;
@@ -101,7 +104,7 @@ public class Main {
         do { 
             System.out.println(prompt);
             s = sc.nextLine().trim();
-            if(s.length() == 0) {
+            if(s.length() == 0) { //chequea que no esté vacio el campo 
                 System.out.println("no puede dejar el campo vacío");
             } else {
                 valido = true;
@@ -116,29 +119,30 @@ public class Main {
         String s = "";
 
         do { 
-            System.out.println(prompt);
+            System.out.println(prompt); // pregunta al usuario si desea continuar
             s = sc.nextLine().trim().toLowerCase();
-            if (s.equals("s") || s.equals("n")) {
+            if (s.equals("s") || s.equals("n")) { //chequea que caso pasa
                 valido = true;
             } else {
-                System.out.println("tiene que responder con s o n");
+                System.out.println("tiene que responder con s o n"); //si responde con algo que no es s o n da error
             }
             return s.equals("s");
         } while (!valido);
     }
 
     private static void mostrarTablero(Tablero t) {
-        System.out.println("  ");
+        System.out.print("  ");
         for (int j = 0; j < 4; j++) {
-            System.out.println(j + " ");
+            System.out.print(j + " ");
         }
         System.out.println();
 
         for (int i = 0; i < 4; i++) {
-            System.out.println(i + ": ");
+            System.out.print(i + ": ");
             for (int j = 0; j < 4; j++) {
-                System.out.println(t.obtenerEmoji(i, j) + " ");
+                System.out.print(t.obtenerEmoji(i, j) + " ");
             }
+            System.out.println();
         }
         System.out.println();
     }

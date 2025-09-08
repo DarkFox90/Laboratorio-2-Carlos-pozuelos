@@ -7,7 +7,7 @@ public class Tablero {
 
     public Tablero(int filas, int columnas) {
         tablero = new Celda[filas][columnas];
-
+        celdasReveladas = new boolean[filas][columnas];
         this.inicializarTablero(filas, columnas);
         
     }
@@ -85,5 +85,11 @@ public class Tablero {
             }
         }
         return true;
+    }
+
+    //agregué este método para que pudiera terminar el juego ya que no me funcionaba sin esto
+    public void marcarEmparejadas(int f1, int c1, int f2, int c2) {
+        tablero[f1][c1].setEmparejada(true);
+        tablero[f2][c2].setEmparejada(true);
     }
 }
